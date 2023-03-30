@@ -1,0 +1,21 @@
+.toggle {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ccc;
+}
+.toggle button {
+  padding: 1rem 4rem;
+  font-size: 2.4rem;
+  font-weight: bold;
+  background-color: rgb(153, 23, 185);
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+.loading {
+  color: rgb(255, 0, 64);
+  text-align: center;
+  font-weight: bold;
+}
