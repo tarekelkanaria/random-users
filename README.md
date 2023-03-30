@@ -1,6 +1,10 @@
 # Random Users
 
-A Simple App displays a list of users using API with the ability to search through the list by name.
+A Simple web page displays a list of users using API with the ability to search through the list by name.
+
+## Demo-preview
+
+<a href="https://random-users-elkanaria.netlify.app" target="_blank">The Link</a>
 
 ## Author
 
