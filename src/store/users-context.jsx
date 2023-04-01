@@ -38,19 +38,16 @@ class UsersContextProvider extends Component {
             isError: true,
             errorMessage: `Something went wrong! ${error.message}`,
           });
-          throw new Error(error.message);
         } else if (error.request) {
           this.setState({
             isError: true,
             errorMessage: `Ops! no response was received ${error.message}`,
           });
-          throw new Error(error.message);
         } else {
           this.setState({
             isError: true,
             errorMessage: `Error in setting up the request! ${error.message}`,
           });
-          throw new Error(error.message);
         }
       });
   }
