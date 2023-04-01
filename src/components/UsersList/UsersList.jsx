@@ -1,8 +1,10 @@
 import { Component } from "react";
+import { UserContext } from "../../store/users-context";
 import User from "../User/User";
 import classes from "./UsersList.module.css";
 
 class UsersList extends Component {
+  static contextType = UserContext;
   constructor(props) {
     super(props);
     this.state = { isShown: true };
@@ -18,14 +20,16 @@ class UsersList extends Component {
       <User key={user.first} {...user} />
     ));
 
-    const loading =
-      usersElements.length > 0 ? (
-        <ul>{usersElements}</ul>
-      ) : this.props.target.length === 0 ? (
-        <p className={classes.loading}> Users pending ... </p>
-      ) : (
+    let content = "";
+    if (this.context.isError)
+      content = <p className={classes.loading}>{this.context.errorMessage}</p>;
+    else if (usersElements.length) content = <ul>{usersElements}</ul>;
+    else if (!usersElements.length && this.props.target.length)
+      content = (
         <p className={classes.loading}> No User names with this letters ... </p>
       );
+    else if (!usersElements.length)
+      content = <p className={classes.loading}> Users pending ... </p>;
 
     return (
       <>
@@ -34,7 +38,7 @@ class UsersList extends Component {
             {this.state.isShown ? "Hide Users" : "Show Users"}
           </button>
         </section>
-        {this.state.isShown && loading}
+        {this.state.isShown && content}
       </>
     );
   }

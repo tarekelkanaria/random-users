@@ -6,14 +6,14 @@ import classes from "./SearchUser.module.css";
 class SearchUser extends Component {
   static contextType = UserContext;
   state = {
-    filteredUsers: () => this.context,
+    filteredUsers: () => this.context.usersData,
     targetUser: "",
   };
   componentDidUpdate(prevProps, prevState) {
     if (prevState.targetUser !== this.state.targetUser) {
       this.setState({
         filteredUsers: () =>
-          this.context.filter((user) => {
+          this.context.usersData.filter((user) => {
             let fullName = `${user.first.toLowerCase()} ${user.last.toLowerCase()}`;
             return fullName.includes(this.state.targetUser);
           }),

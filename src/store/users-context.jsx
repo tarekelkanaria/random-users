@@ -3,6 +3,8 @@ import axios from "axios";
 
 export const UserContext = createContext({
   usersData: [],
+  isError: false,
+  errorMessage: "",
 });
 
 class UsersContextProvider extends Component {
@@ -10,6 +12,8 @@ class UsersContextProvider extends Component {
     super(props);
     this.state = {
       usersData: [],
+      isError: false,
+      errorMessage: "",
     };
   }
 
@@ -30,18 +34,30 @@ class UsersContextProvider extends Component {
       .then((data) => this.setState({ usersData: data }))
       .catch((error) => {
         if (error.response) {
-          throw new Error("Something went wrong!", error.message);
+          this.setState({
+            isError: true,
+            errorMessage: `Something went wrong! ${error.message}`,
+          });
+          throw new Error(error.message);
         } else if (error.request) {
-          throw new Error("Ops! no response was received", error.message);
+          this.setState({
+            isError: true,
+            errorMessage: `Ops! no response was received ${error.message}`,
+          });
+          throw new Error(error.message);
         } else {
-          throw new Error("Error in setting up the request!", error.message);
+          this.setState({
+            isError: true,
+            errorMessage: `Error in setting up the request! ${error.message}`,
+          });
+          throw new Error(error.message);
         }
       });
   }
 
   render() {
     return (
-      <UserContext.Provider value={this.state.usersData}>
+      <UserContext.Provider value={this.state}>
         {this.props.children}
       </UserContext.Provider>
     );
