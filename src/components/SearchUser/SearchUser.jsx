@@ -14,7 +14,7 @@ class SearchUser extends Component {
       this.setState({
         filteredUsers: () =>
           this.context.filter((user) => {
-            let fullName = `${user.name.first.toLowerCase()} ${user.name.last.toLowerCase()}`;
+            let fullName = `${user.first.toLowerCase()} ${user.last.toLowerCase()}`;
             return fullName.includes(this.state.targetUser);
           }),
       });

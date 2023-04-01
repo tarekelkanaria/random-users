@@ -15,16 +15,7 @@ class UsersList extends Component {
 
   render() {
     const usersElements = this.props.users.map((user) => (
-      <User
-        key={user.name.first}
-        title={user.name.title}
-        first={user.name.first}
-        last={user.name.last}
-        photo={user.picture.large}
-        country={user.location.country}
-        city={user.location.city}
-        age={user.dob.age}
-      />
+      <User key={user.first} {...user} />
     ));
 
     const loading =
