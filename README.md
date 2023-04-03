@@ -4,7 +4,7 @@ A Simple web page displays a list of users using API with the ability to search 
 
 ## Demo-preview
 
-<a href="https://random-users-elkanaria.netlify.app" target="_blank">The Link</a>
+[The Link](https://random-users-elkanaria.netlify.app)
 
 ## Author
 
